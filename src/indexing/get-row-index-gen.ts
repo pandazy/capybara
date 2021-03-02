@@ -1,0 +1,41 @@
+import { CommonMap, Row } from '../types';
+import { makeAssertUniquePass } from './make-assert-unique-pass';
+import { hashByDefault, getIndexKeyGen } from './get-index-key-gen';
+import { ns } from './ns';
+import { getUniqCheck } from './get-uniq-check';
+import { Index, IndexDef } from './types';
+
+const Context = ns('getRowIndexGen');
+
+export function getRowIndexGen<TRow extends Row>(
+	indexDefMap: CommonMap<IndexDef>,
+	hash = hashByDefault,
+) {
+	const indexers = Object.keys(indexDefMap).map((defKey) => {
+		const indexDef = indexDefMap[defKey];
+		return {
+			makeKey: getIndexKeyGen<TRow>(indexDef.fields, hash),
+			uniqCheck: getUniqCheck<TRow>(indexDef, hash),
+			indexDef,
+		};
+	});
+	const assertUnique = makeAssertUniquePass<TRow>(Context);
+	return (index: Index, row: TRow, rowKey: string) => {
+		const newIndexFragment: Index = indexers.reduce(
+			(indexFragment, { makeKey, uniqCheck, indexDef }) => {
+				assertUnique(row, index, uniqCheck, indexDef);
+				const indexKey = makeKey(row);
+				const existingRowKeys = index[indexKey] || [];
+				return {
+					...indexFragment,
+					[indexKey]: [...existingRowKeys, rowKey],
+				};
+			},
+			{},
+		);
+		return {
+			...index,
+			...newIndexFragment,
+		};
+	};
+}

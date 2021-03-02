@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Capybara:indexing:getRowIndexRemover should throw error if specified field does not exist on row 1`] = `
+"
+[context]: Capybara:indexing:getRowIndexRemover
+[failure cause]: some fields do not exist in the row
+[actual value]: {\\"fields\\":[\\"hobby\\",\\"nationality\\"],\\"row\\":{\\"name\\":\\"shinobu\\",\\"job\\":\\"Jobless\\",\\"alias\\":\\"kiss-shot\\"}}
+[actual value type]: Object"
+`;
