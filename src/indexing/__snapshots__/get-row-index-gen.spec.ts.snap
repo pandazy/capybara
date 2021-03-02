@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Capybara:indexing:getRowIndexGen should throw an error when insert duplicate row into unique-indexed row 1`] = `
+"
+[context]: Capybara:indexing:getRowIndexGen
+[failure cause]: duplicate row is not allowed
+[actual value]: {\\"indexDef\\":{\\"fields\\":[\\"job\\",\\"name\\"],\\"isUnique\\":true},\\"row\\":{\\"name\\":\\"shinobu\\",\\"job\\":\\"Jobless\\",\\"species\\":\\"Vampire\\"},\\"index\\":{\\"[job:jobless][name:shinobu]\\":[\\"1\\"]}}
+[actual value type]: Object"
+`;
+
+exports[`Capybara:indexing:getRowIndexGen should throw an error when insert duplicate row into unique-indexed row 2`] = `
+"
+[context]: Capybara:indexing:getRowIndexGen
+[failure cause]: duplicate row is not allowed
+[actual value]: {\\"indexDef\\":{\\"fields\\":[\\"job\\",\\"name\\"],\\"isUnique\\":true},\\"row\\":{\\"name\\":\\"shinobu\\",\\"job\\":\\"Jobless\\",\\"species\\":\\"Vampire\\"},\\"index\\":{\\"%[job:Jobless][name:shinobu]%\\":[\\"1\\"]}}
+[actual value type]: Object"
+`;
