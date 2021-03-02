@@ -22,7 +22,7 @@ export function addRowsIndexed<TRow extends Row>(
 				[newRow],
 			);
 			const { updatedTable: updatedTableData } = oneRowDataResult;
-			const newRowKey = updatedTableData.nextNewId.toString();
+			const newRowKey = updatedTableData.lastNewId.toString();
 			const index = addRowIndex(
 				finalResult.updatedTable.index,
 				newRow,

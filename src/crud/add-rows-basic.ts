@@ -2,11 +2,11 @@ import { BasicTable, Row } from '../types';
 import { AddRowResult } from './types';
 
 function addOneRow<TRow extends Row>(table: BasicTable<TRow>, newRow: TRow) {
-	const nextNewId = table.nextNewId + 1;
+	const lastNewId = table.lastNewId + 1;
 	return {
 		...table,
-		rows: { ...table.rows, [nextNewId]: newRow },
-		nextNewId,
+		rows: { ...table.rows, [lastNewId]: newRow },
+		lastNewId,
 	};
 }
 
@@ -23,7 +23,7 @@ export function addRowsBasic<TRow extends Row>(
 		return {
 			newRowKeys: [
 				...result.newRowKeys,
-				updatedTable.nextNewId.toString(),
+				updatedTable.lastNewId.toString(),
 			],
 			updatedTable,
 		};

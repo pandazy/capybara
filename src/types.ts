@@ -4,7 +4,7 @@ export interface Row {
 
 export interface BasicTable<RowT extends Row> {
 	rows: { [key: string]: RowT };
-	nextNewId: number;
+	lastNewId: number;
 }
 
 export interface CommonMap<T = any> {

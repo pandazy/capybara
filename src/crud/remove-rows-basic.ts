@@ -10,6 +10,6 @@ export function removeRowsBasic<TRow extends Row>(
 	});
 	return {
 		rows,
-		nextNewId: table.nextNewId,
+		lastNewId: table.lastNewId,
 	};
 }
