@@ -26,7 +26,7 @@ describe(ns('addRowsIndexed'), () => {
 		const table = basicTable<TestRow>();
 
 		expect(table.rows).toEqual({});
-		expect(table.nextNewId).toBe(0);
+		expect(table.lastNewId).toBe(0);
 	});
 
 	it('should add rows to an indexed table', () => {
