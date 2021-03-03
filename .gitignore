@@ -6,7 +6,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # Typescript published lib
-lib
+dist
 
 # Runtime data
 pids

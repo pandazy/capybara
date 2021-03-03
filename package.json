@@ -7,8 +7,8 @@
 	"name": "@pandazy/capybara",
 	"version": "0.1.0",
 	"description": "A handy database library",
-	"main": "index.js",
-	"types": "index.d.ts",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
 	"devDependencies": {
 		"@types/jest": "^26.0.20",
 		"@types/lolex": "^5.1.0",
@@ -19,13 +19,13 @@
 		"tslint-config-prettier": "^1.18.0"
 	},
 	"scripts": {
-		"build": "yarn clean && tsc",
 		"clean": "rm -rf coverage",
 		"test:clear-cache": " jest --clearCache",
 		"prepare": "yarn build",
 		"test": "yarn lint && yarn clean && yarn test:clear-cache && jest --watchAll --coverage",
 		"lint": "tslint -p tsconfig.json",
-		"release": "yarn lint && jest && yarn publish && git clean -fd"
+		"release": "yarn lint && jest && yarn publish && git clean -fd",
+		"build": "yarn clean && tsc"
 	},
 	"keywords": [
 		"TypeScript",
