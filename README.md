@@ -58,8 +58,12 @@ const { newRowKeys, updatedTable } = addRowsBasic<MyRow>(table, rows);
 ```
 
 ### Update rows
+TBD
 ### Remove rows
+TBD
 
 ### Add index to the table
 #### Q:Why index?
 A: Index helps improving searching performance. When searching by indexed combinations of fields, the search complexity is O(1), it is a time-honored database optimization strategy.
+
+TBD
