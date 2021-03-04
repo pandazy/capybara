@@ -1,35 +1,18 @@
-import { assertValue } from '@pandazy/mole/assertions';
+import { assertValue } from '@pandazy/mole-core/dist/assertions';
 import { Row } from '../types';
 import { UniqCheck } from './get-uniq-check';
 import { Index, IndexDef } from './types';
 
-const isValid = ({
-	row,
-	index,
-	pass,
-}: {
+export interface ThingsToCheck {
 	row: Row;
 	index: Index;
 	pass: UniqCheck<Row>;
-}) => pass(row, index);
+	indexDef?: IndexDef;
+}
 
-const assertUniqueCheckPassed = assertValue({
+const isValid = ({ row, index, pass }: ThingsToCheck) => pass(row, index);
+
+export const makeAssertUniquePass = assertValue<ThingsToCheck>({
 	isValid,
 	failureCause: 'duplicate row is not allowed',
 });
-
-export function makeAssertUniquePass<TRow extends Row>(context: string) {
-	const assertInContext = assertUniqueCheckPassed(context);
-	return (
-		row: TRow,
-		index: Index,
-		pass: UniqCheck<TRow>,
-		indexDef?: IndexDef,
-	) =>
-		assertInContext({
-			indexDef,
-			row,
-			index,
-			pass,
-		});
-}

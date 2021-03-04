@@ -10,7 +10,7 @@ const assertUniqueIndexDefFields = makeAssertUniqueIndexDefFields(Context);
 
 export function indexDefsToMap(fieldDefs: IndexDef[]): CommonMap<IndexDef> {
 	return fieldDefs.reduce((defMap, { fields, isUnique }: IndexDef) => {
-		assertUniqueIndexDefFields(fields, defMap);
+		assertUniqueIndexDefFields({ fields, indexDefs: defMap });
 		const defKey = makeIndexDefKey(fields);
 		return {
 			...defMap,

@@ -2,7 +2,7 @@ import { CommonMap, Row } from '../types';
 import { makeAssertUniquePass } from './make-assert-unique-pass';
 import { hashByDefault, getIndexKeyGen } from './get-index-key-gen';
 import { ns } from './ns';
-import { getUniqCheck } from './get-uniq-check';
+import { getUniqCheck, UniqCheck } from './get-uniq-check';
 import { Index, IndexDef } from './types';
 
 const Context = ns('getRowIndexGen');
@@ -19,11 +19,16 @@ export function getRowIndexGen<TRow extends Row>(
 			indexDef,
 		};
 	});
-	const assertUnique = makeAssertUniquePass<TRow>(Context);
+	const assertUnique = makeAssertUniquePass(Context);
 	return (index: Index, row: TRow, rowKey: string) => {
 		const newIndexFragment: Index = indexers.reduce(
 			(indexFragment, { makeKey, uniqCheck, indexDef }) => {
-				assertUnique(row, index, uniqCheck, indexDef);
+				assertUnique({
+					row,
+					indexDef,
+					index,
+					pass: uniqCheck as UniqCheck<Row>,
+				});
 				const indexKey = makeKey(row);
 				const existingRowKeys = index[indexKey] || [];
 				return {

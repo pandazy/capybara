@@ -1,30 +1,19 @@
-import { assertValue } from '@pandazy/mole/assertions';
+import { assertValue } from '@pandazy/mole-core/dist/assertions';
 import { CommonMap } from '../types';
 import { makeIndexDefKey } from './get-index-key-gen';
 import { IndexDef } from './types';
 
-const isValid = ({
-	fields,
-	indexDefs,
-}: {
+export interface ThingsToCheck {
 	fields: string[];
 	indexDefs: CommonMap<IndexDef>;
-}) => {
+}
+
+const isValid = ({ fields, indexDefs }: ThingsToCheck) => {
 	const indexDefKey = makeIndexDefKey(fields);
 	return !indexDefs.hasOwnProperty(indexDefKey);
 };
 
-const assertUniqueIndexDefFields = assertValue({
+export const makeAssertUniqueIndexDefFields = assertValue<ThingsToCheck>({
 	isValid,
 	failureCause: 'the same fields already got defined',
 });
-
-export function makeAssertUniqueIndexDefFields(context: string) {
-	const assertInContext = assertUniqueIndexDefFields(context);
-	return (fields: string[], indexDefs: CommonMap<IndexDef>) => {
-		assertInContext({
-			fields,
-			indexDefs,
-		});
-	};
-}

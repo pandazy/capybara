@@ -1,19 +1,15 @@
-import { assertValue } from '@pandazy/mole/assertions';
+import { assertValue } from '@pandazy/mole-core/dist/assertions';
 import { Row } from '../types';
 
-const isValid = ({ fields, row }: { fields: string[]; row: Row }) =>
+export interface ThingsToCheck {
+	fields: string[];
+	row: Row;
+}
+
+const isValid = ({ fields, row }: ThingsToCheck) =>
 	fields.every((field: string) => row.hasOwnProperty(field));
 
-const assertValidField = assertValue({
+export const makeAssertValidRowFields = assertValue<ThingsToCheck>({
 	isValid,
 	failureCause: 'some fields do not exist in the row',
 });
-
-export function makeAssertValidRowFields<TRow extends Row>(context: string) {
-	const assertInContext = assertValidField(context);
-	return (fields: string[], row: TRow) =>
-		assertInContext({
-			fields,
-			row,
-		});
-}

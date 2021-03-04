@@ -15,7 +15,7 @@ export function getRowIndexRemover<TRow extends Row>(
 	return (index: Index, row: TRow, rowKey: string) =>
 		Object.keys(indexDefs).reduce((updatedIndex: Index, defKey: string) => {
 			const { fields } = indexDefs[defKey];
-			assertValidRowFields(fields, row);
+			assertValidRowFields({ fields, row });
 
 			const indexKey = getIndexKeyGen<TRow>(fields, hash)(row);
 			const indexVals = updatedIndex[indexKey] || [];
