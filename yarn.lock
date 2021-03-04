@@ -486,10 +486,10 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@pandazy/mole-core@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@pandazy/mole-core/-/mole-core-1.0.0.tgz#df58a8d3dde65a09d52d444d6b4490aeb0018567"
-  integrity sha512-HHmtxcuImYV0nPBj0Rhb48tYcDRZXO37rJ42pAqRXnrluFSDghL7P4VJ3HMfbz2EO9aiMf6AQ4qgMcfrmUWKFA==
+"@pandazy/mole-core@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@pandazy/mole-core/-/mole-core-1.0.1.tgz#d9ca4924e61192a5b779e808fc22f7d5da810647"
+  integrity sha512-rYvNGuGseVjeX0qzYIDVGDFyWok2WkI35lYTR3DvwuKRrpKbElYN0LT5EOrvS6uc4jD1cp3at57WFxqKBwMz1w==
   dependencies:
     tslib "^2.1.0"
     typescript "^4.2.2"
