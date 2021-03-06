@@ -1,3 +1,4 @@
+import { keys } from '@pandazy/mole-core/dist/object-methods';
 import { BasicTable, Row } from '../types';
 import { hashByDefault } from './get-index-key-gen';
 import { getRowIndexGen } from './get-row-index-gen';
@@ -11,7 +12,7 @@ export function getTableIndexCreator<TRow extends Row>(
 	const indexDefs = indexDefsToMap(fieldDefs);
 	const updateIndex = getRowIndexGen<TRow>(indexDefs, hash);
 	return (table: BasicTable<TRow>): IndexedTable<TRow> => {
-		const index: Index = Object.keys(table.rows).reduce(
+		const index: Index = keys(table.rows).reduce(
 			(updatedIndex: Index, rowKey: string) => {
 				return updateIndex(updatedIndex, table.rows[rowKey], rowKey);
 			},

@@ -4,6 +4,7 @@ import { hashByDefault, getIndexKeyGen } from './get-index-key-gen';
 import { ns } from './ns';
 import { getUniqCheck, UniqCheck } from './get-uniq-check';
 import { Index, IndexDef } from './types';
+import { keys } from '@pandazy/mole-core/dist/object-methods';
 
 const Context = ns('getRowIndexGen');
 
@@ -11,7 +12,7 @@ export function getRowIndexGen<TRow extends Row>(
 	indexDefMap: CommonMap<IndexDef>,
 	hash = hashByDefault,
 ) {
-	const indexers = Object.keys(indexDefMap).map((defKey) => {
+	const indexers = keys(indexDefMap).map((defKey) => {
 		const indexDef = indexDefMap[defKey];
 		return {
 			makeKey: getIndexKeyGen<TRow>(indexDef.fields, hash),
