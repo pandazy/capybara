@@ -5,7 +5,7 @@
 This is a TypeScript library providing simple database mechanism supporting the features below:
 
 - functional-rogramming-style basic CRUD operations
-- searches that optimized by an index map in each table
+- searches optimized by simple database index
 
 ## How to use it >>
 ### Create a data table
@@ -64,6 +64,8 @@ TBD
 
 ### Add index to the table
 #### Q:Why index?
-A: Index helps improving searching performance. When searching by indexed combinations of fields, the search complexity is O(1), it is a time-honored database optimization strategy.
+A: [Index](https://en.wikipedia.org/wiki/Database_index) helps improving searching performance by decreasing the complexity.
+
+∆ Currently this library only supports simple hashmap index which guarantees a O(1) complexity
 
 TBD

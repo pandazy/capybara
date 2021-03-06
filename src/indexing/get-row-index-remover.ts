@@ -1,3 +1,4 @@
+import { keys } from '@pandazy/mole-core/dist/object-methods';
 import { CommonMap, Row } from '../types';
 import { getIndexKeyGen, hashByDefault } from './get-index-key-gen';
 import { makeAssertValidRowFields } from './make-assert-valid-row-fields';
@@ -13,7 +14,7 @@ export function getRowIndexRemover<TRow extends Row>(
 	hash = hashByDefault,
 ) {
 	return (index: Index, row: TRow, rowKey: string) =>
-		Object.keys(indexDefs).reduce((updatedIndex: Index, defKey: string) => {
+		keys(indexDefs).reduce((updatedIndex: Index, defKey: string) => {
 			const { fields } = indexDefs[defKey];
 			assertValidRowFields({ fields, row });
 
