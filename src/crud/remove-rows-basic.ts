@@ -6,7 +6,9 @@ export function removeRowsBasic<TRow extends Row>(
 ): BasicTable<TRow> {
 	const rows = { ...table.rows };
 	rowKeys.forEach((rowKey) => {
-		delete rows[rowKey];
+		if (rowKey) {
+			delete rows[rowKey];
+		}
 	});
 	return {
 		rows,

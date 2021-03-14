@@ -8,6 +8,9 @@ export function updateRowsBasic<TRow extends Row, TUpdate extends CommonMap>(
 	return {
 		...table,
 		rows: rowKeys.reduce((updatedRows, rowKey) => {
+			if (!rowKey || !updatedRows[rowKey]) {
+				return updatedRows;
+			}
 			return {
 				...updatedRows,
 				[rowKey]: {

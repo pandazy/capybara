@@ -41,11 +41,17 @@ describe(ns('updateRowsIndexed'), () => {
 	).updatedTable;
 
 	it('should update rows in an indexed table', () => {
-		expect.assertions(3);
+		expect.assertions(4);
 
 		const updatedTable = updateRowsIndexed<TestRow, TestUpdate>(
 			mockTable,
 			['1', '2'],
+			{ firstName: 'Foo', lastName: 'Bar' },
+		);
+
+		const updatedTableWrongKey = updateRowsIndexed<TestRow, TestUpdate>(
+			mockTable,
+			['6', undefined as any],
 			{ firstName: 'Foo', lastName: 'Bar' },
 		);
 
@@ -55,6 +61,8 @@ describe(ns('updateRowsIndexed'), () => {
 			{ firstName: 'Foo', lastName: 'Bar' },
 			customHash,
 		);
+
+		expect(updatedTableWrongKey).toEqual(mockTable);
 
 		expect(updatedTable.rows).toEqual({
 			'1': {

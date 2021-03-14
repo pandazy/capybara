@@ -15,6 +15,10 @@ export function getRowIndexRemover<TRow extends Row>(
 ) {
 	return (index: Index, row: TRow, rowKey: string) =>
 		keys(indexDefs).reduce((updatedIndex: Index, defKey: string) => {
+			if (!row) {
+				return updatedIndex;
+			}
+
 			const { fields } = indexDefs[defKey];
 			assertValidRowFields({ fields, row });
 

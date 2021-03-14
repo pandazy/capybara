@@ -23,7 +23,7 @@ describe(ns('removeRowsIndexed'), () => {
 	};
 
 	it('should remove rows from an indexed table', () => {
-		expect.assertions(4);
+		expect.assertions(5);
 		const customHash = (val: string) => `%${val}%`;
 
 		const table = indexedTable<TestRow>([
@@ -41,6 +41,10 @@ describe(ns('removeRowsIndexed'), () => {
 		);
 
 		const removedTable = removeRowsIndexed<TestRow>(mockTable, ['1', '2']);
+		const removedTableWrongKey = removeRowsIndexed<TestRow>(mockTable, [
+			'5',
+			undefined as any,
+		]);
 		const removedTableHashed = removeRowsIndexed<TestRow>(
 			mockTableHashed,
 			['1', '2'],
@@ -48,6 +52,7 @@ describe(ns('removeRowsIndexed'), () => {
 		);
 		expect(removedTable.rows).toEqual({});
 		expect(removedTable.index).toEqual({});
+		expect(removedTableWrongKey).toEqual(mockTable);
 
 		expect(removedTableHashed.rows).toEqual({});
 		expect(removedTableHashed.index).toEqual({});
