@@ -1,26 +1,29 @@
 {
-	"compilerOptions": {
-		/* Basic Options */
-		"target": "es5",
-		"module": "commonjs",
-		"importHelpers": true,
-		"outDir": "./dist",
-		"lib": ["dom", "es2017"],
-		"declaration": true,
-		"sourceMap": true,
+  "compilerOptions": {
+    /* Basic Options */
+    "target": "es6",
+    "module": "commonjs",
+    "importHelpers": true,
+    "outDir": "./dist",
+    "lib": ["dom", "es2021"],
+    "declaration": true,
+    "sourceMap": true,
 
-		/* Strict Type-Checking Options */
-		"strict": true,
+    /* Strict Type-Checking Options */
+    "strict": true,
 
-		/* Additional Checks */
-		"noUnusedLocals": true,
-		"noFallthroughCasesInSwitch": true,
+    /* Additional Checks */
+    "noUnusedLocals": true,
+    "noFallthroughCasesInSwitch": true,
 
-		/* Module Resolution Options */
-		"moduleResolution": "node",
-		"baseUrl": "./src",
-		"esModuleInterop": true
-	},
-	"include": ["src/**/*"],
-	"exclude": ["node_modules", "**/*.spec.ts", "**/*.mock.ts"]
+    /* Module Resolution Options */
+    "moduleResolution": "node",
+    "baseUrl": "./src",
+    "esModuleInterop": true,
+    "types": ["jest", "node"]
+  },
+  "include": ["src/**/*"],
+  "exclude": [
+    "node_modules"
+  ]
 }

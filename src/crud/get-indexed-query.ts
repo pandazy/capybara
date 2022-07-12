@@ -5,16 +5,16 @@ import { Row } from '../types';
 import { QueryParam } from './types';
 
 export function getIndexedQuery<TRow extends Row>(
-	sourceTable: IndexedTable<TRow>,
-	hash = hashByDefault,
+  sourceTable: IndexedTable<TRow>,
+  hash = hashByDefault,
 ) {
-	return (query: QueryParam, isRowKeyOnly = false) => {
-		const fields = keys(query);
-		const indexKey = getIndexKeyGen<QueryParam>(fields, hash)(query);
+  return (query: QueryParam, isRowKeyOnly = false) => {
+    const fields = keys(query);
+    const indexKey = getIndexKeyGen<QueryParam>(fields, hash)(query);
 
-		const rowKeys = sourceTable.index[indexKey];
-		return isRowKeyOnly
-			? rowKeys
-			: rowKeys.map((rowKey) => sourceTable.rows[rowKey]);
-	};
+    const rowKeys = sourceTable.index[indexKey];
+    return isRowKeyOnly
+      ? rowKeys
+      : rowKeys.map((rowKey) => sourceTable.rows[rowKey]);
+  };
 }

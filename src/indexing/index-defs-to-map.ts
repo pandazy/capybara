@@ -9,15 +9,15 @@ const Context = ns('indexDefsToMap');
 const assertUniqueIndexDefFields = makeAssertUniqueIndexDefFields(Context);
 
 export function indexDefsToMap(fieldDefs: IndexDef[]): CommonMap<IndexDef> {
-	return fieldDefs.reduce((defMap, { fields, isUnique }: IndexDef) => {
-		assertUniqueIndexDefFields({ fields, indexDefs: defMap });
-		const defKey = makeIndexDefKey(fields);
-		return {
-			...defMap,
-			[defKey]: {
-				fields,
-				isUnique,
-			},
-		};
-	}, {});
+  return fieldDefs.reduce((defMap, { fields, isUnique }: IndexDef) => {
+    assertUniqueIndexDefFields({ fields, indexDefs: defMap });
+    const defKey = makeIndexDefKey(fields);
+    return {
+      ...defMap,
+      [defKey]: {
+        fields,
+        isUnique,
+      },
+    };
+  }, {});
 }

@@ -1,12 +1,12 @@
 export interface Row {
-	[key: string]: any;
+  [key: string]: any;
 }
 
 export interface BasicTable<RowT extends Row> {
-	rows: { [key: string]: RowT };
-	lastNewId: number;
+  rows: { [key: string]: RowT };
+  lastNewId: number;
 }
 
 export interface CommonMap<T = any> {
-	[key: string]: T;
+  [key: string]: T;
 }
