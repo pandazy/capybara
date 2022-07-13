@@ -1,13 +1,13 @@
 import { BasicTable, Row } from '../types';
 
 export interface QueryParam {
-	[key: string]: any;
+  [key: string]: any;
 }
 
 export interface AddRowResult<
-	TRow extends Row,
-	TTable extends BasicTable<TRow> = BasicTable<TRow>
+  TRow extends Row,
+  TTable extends BasicTable<TRow> = BasicTable<TRow>
 > {
-	newRowKeys: string[];
-	updatedTable: TTable;
+  newRowKeys: string[];
+  updatedTable: TTable;
 }
