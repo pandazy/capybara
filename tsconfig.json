@@ -1,29 +1,18 @@
 {
+  "extends": "@pandazy/mole-config/tsconfig.json",
   "compilerOptions": {
-    /* Basic Options */
-    "target": "es6",
-    "module": "commonjs",
-    "importHelpers": true,
     "outDir": "./dist",
-    "lib": ["dom", "es2021"],
-    "declaration": true,
-    "sourceMap": true,
-
-    /* Strict Type-Checking Options */
-    "strict": true,
-
-    /* Additional Checks */
-    "noUnusedLocals": true,
-    "noFallthroughCasesInSwitch": true,
-
-    /* Module Resolution Options */
-    "moduleResolution": "node",
     "baseUrl": "./src",
-    "esModuleInterop": true,
-    "types": ["jest", "node"]
+    "paths": {
+      "@/*": [
+        "./*"
+      ]
+    },
   },
-  "include": ["src/**/*"],
+  "include": [
+    "./src/**/*"
+  ],
   "exclude": [
-    "node_modules"
+    "./node_modules"
   ]
 }

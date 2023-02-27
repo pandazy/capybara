@@ -4,6 +4,6 @@ exports[`Capybara:indexing:getRowIndexRemover should throw error if specified fi
 "
 [context]: Capybara:indexing:getRowIndexRemover
 [failure cause]: some fields do not exist in the row
-[actual value]: {\\"fields\\":[\\"hobby\\",\\"nationality\\"],\\"row\\":{\\"name\\":\\"shinobu\\",\\"job\\":\\"Jobless\\",\\"alias\\":\\"kiss-shot\\"}}
+[actual value]: {"fields":["hobby","nationality"],"row":{"name":"shinobu","job":"Jobless","alias":"kiss-shot"}}
 [actual value type]: Object"
 `;

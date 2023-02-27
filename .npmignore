@@ -10,7 +10,7 @@ yarn-error.log*
 
 # Unnecessary TypeScript config
 tsconfig.json
-tslint.json
+tsconfig.build.json
 
 # Test settings
 jest.config.js
@@ -24,11 +24,5 @@ node_modules/
 # Optional npm cache directory
 .npm
 
-# Output of 'npm pack'
-*.tgz
-
-# Yarn Integrity file
-.yarn-integrity
-
-# dotenv environment variables file
-.env
+# pandazy developer's personal settings
+.pandazy-dev
