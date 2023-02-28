@@ -8,12 +8,12 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "devDependencies": {
-    "@pandazy/eslint-config-mole": "0.1.0",
-    "@pandazy/mole-config": "0.1.6",
+    "@pandazy/eslint-config-mole": "0.1.2",
+    "@pandazy/mole-config": "0.1.8",
     "@types/jest": "29.4.0",
     "@typescript-eslint/eslint-plugin": "5.53.0",
     "@typescript-eslint/parser": "5.53.0",
-    "eslint": "8.34.0",
+    "eslint": "8.35.0",
     "jest": "29.4.3",
     "ts-jest": "29.0.5",
     "tslib": "2.5.0",
@@ -46,5 +46,8 @@
   "jest": {
     "preset": "@pandazy/mole-config"
   },
-  "moleOn": true
+  "moleOn": true,
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  }
 }
